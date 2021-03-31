@@ -1,0 +1,1 @@
+from .sentiment_pipeline import SentimentPipeline
