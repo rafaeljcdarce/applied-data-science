@@ -1,3 +1,5 @@
+*.key
+
 # data
 *.csv
 *.pkl
