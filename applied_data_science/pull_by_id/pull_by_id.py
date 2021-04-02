@@ -64,7 +64,7 @@ def soa2aos(tweets):
     return aos
 
 def main():
-    ids = ids_from_file("2020-03-22_clean-dataset.tsv")
+    ids = ids_from_file("/mnt/storage/scratch/rf17160/dataset.tsv")
     ids = random.choices(ids,k=100)
     tweets = None
     remaining = 1
