@@ -11,8 +11,13 @@ tweetfields = "context_annotations,author_id,entities,geo,id,public_metrics,poss
 userfields =  "entities,id,location,name,verified,description"
 fields = f"expansions={expansions}&place.fields={placefields}&tweet.fields={tweetfields}&user.fields={userfields}"
 
-bearertoken = None # Change this to your token
-
+bearertoken = None
+try:
+    with open("bearertoken.key",'r') as f:
+        bearertoken = f.read()
+except:
+    print("Unable to load bearer token!")
+    exit(1)
 
 def ids_from_file(filename):
     with open(filename,'r') as f:
@@ -78,6 +83,7 @@ def main():
                     tweets["includes"][key].extend(newtweets["includes"][key])
 
         except:
+            # It is possible to run into error codes not 200, the method to handle this could be changed.
             continue
         
     tweets = soa2aos(tweets)
