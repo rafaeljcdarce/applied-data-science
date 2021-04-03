@@ -22,18 +22,18 @@ class SentimentPipeline():
     def __call__(self,  df):
 
         print("\nCLEANING")
-        clean_texts = self._clean_parallel(df['text'])
+        df['clean_texts'] = self._clean_parallel(df['text'])
         
         print("\nANALYSING")
-        sent_scores = self._analyse_parallel(clean_texts)
+        df['sent_scores'] = self._analyse_parallel(df['clean_texts'])
         
         print("\nCLASSIFYING")
-        sents = self._classify_parallel(sent_scores)
+        df['sents'] = self._classify_parallel(df['sent_scores'])
 
         print("\nDONE")
-        output = pd.DataFrame({"date": df['date'].tolist(), "text":clean_texts, "sentiment_score":sent_scores, "sentiment":sents})
-        output = output.set_index('date')
-        return output
+        # output = pd.DataFrame({"date": df['date'].tolist(), "text": clean_texts, "sentiment_score": sent_scores, "sentiment": sents})
+        # output = Voutput.set_index('date')
+        return df
 
     def _clean_parallel(self, texts):
         with mp.Pool(self.workers) as pool:

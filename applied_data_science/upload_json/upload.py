@@ -5,6 +5,7 @@ import json
 import pandas as pd
 import pandas_gbq as pdbq
 
+from applied_data_science.sentiment_pipeline import SentimentPipeline
 from google.oauth2 import service_account
 from datetime import datetime
 
@@ -112,7 +113,7 @@ def main():
         './service-account.json',
     )
     df = jsonfile_to_df(args.Path, args.matched_rules)
-
+    df = SentimentPipeline()(df)
     upload_df(credentials, df, args.table_name)
 
 __name__ == '__main__' and main()
