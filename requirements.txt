@@ -2,3 +2,6 @@ pandas
 vaderSentiment
 tqdm
 matplotlib
+requests
+pandas-gbq 
+google-cloud-bigquery[bqstorage,pandas]
