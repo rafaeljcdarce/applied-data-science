@@ -1,4 +1,5 @@
 *.key
+service-account.json
 
 # data
 *.csv
