@@ -1,6 +1,6 @@
 *.key
 service-account.json
-BigQuery-Query-SA.json
+BigQuery-SA.json
 
 # data
 *.csv
