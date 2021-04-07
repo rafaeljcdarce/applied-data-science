@@ -10,7 +10,7 @@ standard_filters = 'lang:en -is:retweet'
 rules = [
     {"value": "(vaccine OR jab)" + " " + standard_filters, "tag": "vaccines"},
     {"value": "(AZ OR astra-zeneca OR astrazeneca)" + " " + standard_filters, "tag": "az-vaccine"},
-    {"value": "(phizer OR biontech)" + " " + standard_filters, "tag": "pb-vaccine"},
+    {"value": "(pfizer OR biontech)" + " " + standard_filters, "tag": "pb-vaccine"},
     {"value": "moderna" + " " + standard_filters, "tag": "m-vaccine"},
 ]
 
