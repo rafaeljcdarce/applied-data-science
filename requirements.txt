@@ -1,7 +1,10 @@
 pandas
+numpy
 vaderSentiment
 tqdm
 matplotlib
 requests
 pandas-gbq 
 google-cloud-bigquery[bqstorage,pandas]
+statsmodels
+ruptures

@@ -31,8 +31,7 @@ class SentimentPipeline():
         df['sents'] = self._classify_parallel(df['sent_scores'])
 
         print("\nDONE")
-        # output = pd.DataFrame({"date": df['date'].tolist(), "text": clean_texts, "sentiment_score": sent_scores, "sentiment": sents})
-        # output = Voutput.set_index('date')
+
         return df
 
     def _clean_parallel(self, texts):
