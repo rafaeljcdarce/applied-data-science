@@ -51,10 +51,10 @@ def clean_location(x):
     country = find_country(str(x))
     state = find_state(str(x))
     # countryFromCity = find_country_from_city(str(x))
-    if country:
+    if state:
+        return state
+    elif country:
         return country
-    # elif state:
-    #     return state
     else:
         return find_country_from_city(str(x))
 

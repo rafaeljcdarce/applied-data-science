@@ -5,24 +5,29 @@ from city_to_state import city_to_state_dict
 import numpy as np
 import geonamescache
 from loc_ops import *
+from pprint import pprint
 
+def clean_locations():
+    df = pd.read_pickle("~/applied-data-science/data.pkl") # read from pickle
+    df.columns = ['id', 'location', 'text', 'date'] # set headers
+    df['date'] = pd.to_datetime(df['date']) # parse dates
+    # df = df[20000:21000]
 
-df = pd.read_csv('~/ADS/data/vaccinedata.csv', encoding = 'latin', header=None) # load example data
-df.columns = ['id','author_id','author_handle','author_name','author_description','author_location','author_verified','text','is_reply','like_count','quote_count','reply_count','retweet_count','created_at','matched_rules']
-df = df[20000:20200]
-print(df['author_location'])
-df = df.dropna(axis=0, subset=['author_location']).reset_index(drop=True)
-locations = df['author_location']
+    df = df.dropna(axis=0, subset=['location']).reset_index(drop=True)
+    locations = df['location']
 
-raw_cleanLocs = [re.sub('[^a-zA-Z ,]+','',i) for i in locations] 
+    raw_cleanLocs = [re.sub('[^a-zA-Z ,]+','',i) for i in locations] 
 
-df['author_location'] = [clean_location(i) for i in raw_cleanLocs]
-df = df.dropna(axis=0, subset=['author_location']).reset_index(drop=True)
+    df['cleaned location'] = [clean_location(i) for i in raw_cleanLocs]
+    # df = df.dropna(axis=0, subset=['location']).reset_index(drop=True)
+    # pprint(df[['location', 'cleaned location']])
 
-df['Sentiment'] = np.random.uniform(-1, 1, len(df['author_location']))
+    df['Sentiment'] = np.random.uniform(-1, 1, len(df['location']))
 
-locatedSentimentdf = pd.DataFrame({
-            'Location': df['author_location'],
-            'Sentiment': df['Sentiment'],
-})
-locatedSentimentdf.to_csv('locatedData.csv')
+    locatedSentimentdf = pd.DataFrame({
+                'Location': df['cleaned location'],
+                'Sentiment': df['Sentiment'],
+    })
+    # locatedSentimentdf.to_pickle('locatedData.csv')
+    locatedSentimentdf.to_pickle('locateddf.pkl')
+    return locatedSentimentdf
