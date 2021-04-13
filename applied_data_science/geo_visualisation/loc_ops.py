@@ -14,7 +14,7 @@ gc = geonamescache.GeonamesCache()
 def find_country(text):
     for k,v in country_to_code_dict.items():
         if re.search(k,  text, re.IGNORECASE):
-            return [k,v[0]]
+            return v[0]
         # elif re.search(v[0],  text, re.IGNORECASE):
         #     return [k,v[0]]
         # elif re.search(v[1],  text, re.IGNORECASE):
@@ -25,13 +25,11 @@ def find_country_from_city(text):
         city_to_country_dict = pck.load(f)
     for k,v in city_to_country_dict.items():
         if re.search(k,  text, re.IGNORECASE):
-            if v == 'US':
-                return find_state(text)
+            # if v == 'US':
+            #     return find_state(text)
             for countryKey, countryCodes in country_to_code_dict.items():
                 if re.search(countryCodes[1],  v, re.IGNORECASE):
-                    return [k,countryCodes[0]]
-
-
+                    return countryCodes[0]
 
 def find_state(text):
     states = gc.get_us_states()
@@ -55,8 +53,8 @@ def clean_location(x):
     # countryFromCity = find_country_from_city(str(x))
     if country:
         return country
-    elif state:
-        return state
+    # elif state:
+    #     return state
     else:
         return find_country_from_city(str(x))
 
