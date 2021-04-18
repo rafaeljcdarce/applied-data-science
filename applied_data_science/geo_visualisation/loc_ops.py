@@ -68,8 +68,8 @@ def clean_location(x):
         return state
     elif country:
         return country
-    # else:
-    #     return None
     else:
-        return find_country_from_city(str(x))
+        return None
+    # else:
+    #     return find_country_from_city(str(x))
 
