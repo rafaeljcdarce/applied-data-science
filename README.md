@@ -2,7 +2,7 @@
 
 ## Install
 
-Assumes you are on Linux/Mac and have Python 3.6+
+Assumes you are on Linux/Mac and have Python 3.8+
 
 ```
 python3 -m venv venv

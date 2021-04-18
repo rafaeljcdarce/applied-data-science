@@ -8,3 +8,6 @@ pandas-gbq
 google-cloud-bigquery[bqstorage,pandas]
 statsmodels
 ruptures
+plotly
+us
+geonamescache
