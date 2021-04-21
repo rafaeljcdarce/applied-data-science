@@ -7,6 +7,20 @@ from .city_to_state import city_to_state_dict
 from .country_to_code import country_to_code_dict
 from pprint import pprint
 import pickle as pck
+import os
+
+cwd = os.getcwd()
+print(cwd)
+gc = geonamescache.GeonamesCache()
+
+# with open('/applied_data_science/geo_visualisation/city_to_country.pck', 'rb') as f:
+#     city_to_country_dict = pck.load(f)
+
+with open(cwd+'/applied_data_science/geo_visualisation/city_to_state.pck', 'rb') as f:
+    city_to_state_dict = pck.load(f)
+
+with open(cwd+'/applied_data_science/geo_visualisation/country_to_code.pck', 'rb') as f:
+    country_to_code_dict = pck.load(f)
 
 
 gc = geonamescache.GeonamesCache()
@@ -72,4 +86,3 @@ def clean_location(x):
         return None
     # else:
     #     return find_country_from_city(str(x))
-
