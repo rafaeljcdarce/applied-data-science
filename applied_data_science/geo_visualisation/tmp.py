@@ -7,7 +7,7 @@ df = pd.read_pickle("../../data.pkl")
 print('Total tweet count: ', len(df))
 
 t0 = time.time()
-df = clean_locations(df, chunksize=1000)
+df = clean_locations(df, chunksize=100000)
 t1 = time.time()
 
 print('Time taken: ', t1-t0)

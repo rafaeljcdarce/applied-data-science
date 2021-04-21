@@ -2,14 +2,32 @@ import plotly.express as px
 import pandas as pd 
 import numpy as np
 from pprint import pprint
-from geocleaner import clean_locations
+from .geocleaner import clean_locations
 
-def plotGlobalSentiments(df, mode):
+def plotGlobalSentiments(df, mode='states'):
+
+    countriesdf = pd.DataFrame({'Location': [], 'Sentiment': []})
+    statesdf = pd.DataFrame({'Location': [], 'Sentiment': []})
+
+    for i in range(len(df)):
+        if isinstance(df.clean_location.iloc[i], str) and mode == 'countries':
+            countriesdf.loc[i] = list(df.iloc[i])
+        elif isinstance(df.clean_location.iloc[i], list) and mode == 'states':
+            statesdf.loc[i] = list([df.iloc[i][0][3],df.iloc[i][1]])
+
+    statesdf = pd.DataFrame({'Location': [], 'Sentiment': []})
+
+    if mode == 'countries':
+        df = countriesdf
+    elif mode == 'states':
+        df = statesdf
+    
+
     # df = df.drop(df.columns[[0]], axis=1) 
     unique_locations = df.Location.unique()
 
     all_sentiments = {}
-    for location, sentiment in zip(df['Location'], df['Sentiment']):
+    for location, sentiment in zip(df['clean_location'], df['sent_scores']):
         try:
             all_sentiments[location].append(sentiment)
         except:
@@ -46,21 +64,16 @@ def plotGlobalSentiments(df, mode):
             geo_scope='usa',  # Plot only the USA instead of globe
         )
     # fig.show()
-    fig.write_image("images/"+mode+"Sentiments.pdf")
+    # fig.write_image("images/"+mode+"Sentiments.pdf")
+    return fig
 
 
 
-# cleaned_locs = clean_locations()
-df = pd.read_pickle('locateddf.pkl')
-countriesdf = pd.DataFrame({'Location': [], 'Sentiment': []})
-statesdf = pd.DataFrame({'Location': [], 'Sentiment': []})
-for i in range(len(df)):
-    if isinstance(df.Location.iloc[i], str):
-        countriesdf.loc[i] = list(df.iloc[i])
-    elif isinstance(df.Location.iloc[i], list):
-        statesdf.loc[i] = list([df.iloc[i][0][3],df.iloc[i][1]])
-print(countriesdf)
-print(statesdf)
-# fig = px.choropleth()
-plotGlobalSentiments(countriesdf, 'countries')
-plotGlobalSentiments(statesdf, 'states')
+# # cleaned_locs = clean_locations()
+# df = pd.read_pickle('locateddf.pkl')
+
+# print(countriesdf)
+# print(statesdf)
+# # fig = px.choropleth()
+# plotGlobalSentiments(countriesdf, 'countries')
+# plotGlobalSentiments(statesdf, 'states')

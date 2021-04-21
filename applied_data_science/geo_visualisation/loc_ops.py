@@ -3,16 +3,16 @@ import numpy as np
 import geonamescache
 from re import search, IGNORECASE, split, match
 from us.states import lookup 
-from city_to_state import city_to_state_dict
-from country_to_code import country_to_code_dict
+from .city_to_state import city_to_state_dict
+from .country_to_code import country_to_code_dict
 from pprint import pprint
 import pickle as pck
 
 
 gc = geonamescache.GeonamesCache()
 
-with open('city_to_country.pck', 'rb') as f:
-    city_to_country_dict = pck.load(f)
+# with open('city_to_country.pck', 'rb') as f:
+#     city_to_country_dict = pck.load(f)
 
 state_names = [i[1]['name'] for i in gc.get_us_states().items()]
 
