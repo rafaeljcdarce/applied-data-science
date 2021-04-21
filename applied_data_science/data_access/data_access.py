@@ -14,7 +14,7 @@ def get_filtered_stream_tweets(start_date, end_date, fields=DEFAULT_FIELDS):
     query = f"""
     select
       {','.join(fields)}
-    from `Tweets.filtered_vaccine_tweets_nobots`
+    from `Tweets.filtered_vaccine_tweets`
     where
         EXTRACT(DATE from created_at) >= DATE({start_date.year}, {start_date.month}, {start_date.day})
       AND
@@ -35,7 +35,7 @@ def get_vaccine_tweets(start_date, end_date, fields=DEFAULT_FIELDS):
         EXTRACT(DATE from created_at) <= DATE({end_date.year}, {end_date.month}, {end_date.day})
     """
 
-    return date_helper(start_date, date(2020, 10, 2), end_date, date(2021, 3, 28), query, fields)
+    return data_helper(start_date, date(2020, 10, 2), end_date, date(2021, 3, 28), query, fields)
 
 
 def get_general_covid_tweets(start_date, end_date, fields=DEFAULT_FIELDS):

@@ -11,3 +11,5 @@ ruptures
 plotly
 us
 geonamescache
+chart_studio
+nbformat
