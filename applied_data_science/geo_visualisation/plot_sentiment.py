@@ -5,7 +5,7 @@ from pprint import pprint
 # from .geocleaner import clean_locations
 import os
 from tqdm import tqdm
-def plotGlobalSentiments(df=None, mode = 'states', threshold=None):
+def plotGlobalSentiments(df=None, mode = 'states', threshold=None, count_threshold=1000):
     
     df = filter_locations(df=df, mode=mode)
 
@@ -33,14 +33,16 @@ def plotGlobalSentiments(df=None, mode = 'states', threshold=None):
     countries = []
     sentiments = []
     for country, sentiment in all_sentiments.items():
-        prop = pos_sentiments[country]/sentiment
-        if threshold:
-            if prop > threshold:
-                prop = 1
-            else:
-                prop = 0
-        countries.append(country)
-        sentiments.append(prop)
+        if count_threshold <= sentiment:
+
+            prop = pos_sentiments[country]/sentiment
+            if threshold:
+                if prop > threshold:
+                    prop = 1
+                else:
+                    prop = 0
+            countries.append(country)
+            sentiments.append(prop)
 
 
     # all_sentiments = {}
