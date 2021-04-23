@@ -7,7 +7,7 @@ import os
 from tqdm import tqdm
 def plotGlobalSentiments(df=None, mode = 'states', threshold=None):
     
-    df = splitDf(df=df, mode=mode)
+    df = filter_locations(df=df, mode=mode)
 
     # if mode == 'countries':
     #     df = pd.read_pickle(os.getcwd()+'/applied_data_science/geo_visualisation/countriesdf.pkl')
@@ -84,9 +84,9 @@ def plotGlobalSentiments(df=None, mode = 'states', threshold=None):
     return fig, all_sentiments
 
 
-def splitDf(df=None, mode='states'):
+def filter_locations(df=None, mode='states', return_all=False):
 
-    if not df:
+    if df is None:
         df = pd.read_pickle('locatedDf.pkl')
 
     # sentdf = pd.read_csv(os.getcwd()+'/applied_data_science/geo_visualisation/sentimentDf.pkl')
@@ -108,6 +108,8 @@ def splitDf(df=None, mode='states'):
     #     elif isinstance(df.clean_location.iloc[i], list):
     #         statesdf = statesdf.append({'Date': df.date.iloc[i], 'Location': df.clean_location.iloc[i][3], 'Sentiment': df.sent_scores.iloc[i]},ignore_index=True)
 
+    if return_all:
+        return df
     dff = pd.DataFrame({'Date': df['date'], 'Location': df['clean_location'], 'Sentiment': df['sents']})
 
     # statesdf.to_pickle('statesdf.pkl')
