@@ -1,0 +1,38 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+\definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
+\definecolor{color2}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
+
+\begin{axis}[
+legend cell align={left},
+legend style={fill opacity=0.8, draw opacity=1, text opacity=1, draw=white!80!black},
+tick align=outside,
+tick pos=left,
+title={Stacked Bar Graph},
+x grid style={white!69.0196078431373!black},
+xmin=0, xmax=105,
+xtick style={color=black},
+y grid style={white!69.0196078431373!black},
+ylabel={name},
+ymin=-0.5, ymax=0.5,
+ytick style={color=black},
+ytick={0},
+yticklabels={something}
+]
+\draw[draw=none,fill=color0] (axis cs:0,-0.25) rectangle (axis cs:25,0.25);
+\addlegendimage{ybar,ybar legend,draw=none,fill=color0};
+\addlegendentry{1}
+
+\draw[draw=none,fill=color1] (axis cs:25,-0.25) rectangle (axis cs:70,0.25);
+\addlegendimage{ybar,ybar legend,draw=none,fill=color1};
+\addlegendentry{2}
+
+\draw[draw=none,fill=color2] (axis cs:70,-0.25) rectangle (axis cs:100,0.25);
+\addlegendimage{ybar,ybar legend,draw=none,fill=color2};
+\addlegendentry{3}
+
+\end{axis}
+
+\end{tikzpicture}

@@ -1,0 +1,56 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+\definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
+
+\begin{axis}[
+legend cell align={left},
+legend style={
+  fill opacity=0.8,
+  draw opacity=1,
+  text opacity=1,
+  at={(0.97,0.03)},
+  anchor=south east,
+  draw=white!80!black
+},
+tick align=outside,
+tick pos=left,
+x grid style={white!69.0196078431373!black},
+xlabel={Day of the Week},
+xmin=-0.3, xmax=6.3,
+xtick style={color=black},
+xtick={0,1,2,3,4,5,6},
+xtick={0,1,2,3,4,5,6},
+xticklabels={Sun,Mon,Tue,Wed,Thur,Fri,Sat},
+xticklabels={Sun,Mon,Tue,Wed,Thur,Fri,Sat},
+y grid style={white!69.0196078431373!black},
+ylabel={Proportion of tweets},
+ymin=0.0684189532170555, ymax=0.179767514923029,
+ytick style={color=black}
+]
+\addplot [semithick, color0]
+table {%
+0 0.0734802514764179
+1 0.162312425208358
+2 0.174706216663666
+3 0.170526709661933
+4 0.166050683582374
+5 0.160508600818251
+6 0.0924151125889999
+};
+\addlegendentry{verified}
+\addplot [semithick, color1]
+table {%
+0 0.0973828362751065
+1 0.160647740668421
+2 0.163354579263459
+3 0.163960205173689
+4 0.151819781416561
+5 0.149192134254367
+6 0.113642722948395
+};
+\addlegendentry{not verified}
+\end{axis}
+
+\end{tikzpicture}

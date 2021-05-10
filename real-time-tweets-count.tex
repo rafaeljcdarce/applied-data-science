@@ -1,0 +1,78 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+
+\begin{axis}[
+tick align=outside,
+tick pos=left,
+x grid style={white!69.0196078431373!black},
+xlabel={Date},
+xmin=-1.95, xmax=40.95,
+xtick style={color=black},
+xtick={-5,0,5,10,15,20,25,30,35,40,45},
+xticklabel style={rotate=45.0},
+xticklabels={
+  2021-04-27,
+  2021-03-23,
+  2021-03-28,
+  2021-04-02,
+  2021-04-07,
+  2021-04-12,
+  2021-04-17,
+  2021-04-22,
+  2021-04-27,
+  ,
+  
+},
+y grid style={white!69.0196078431373!black},
+ylabel={Number of tweets collected},
+ymin=-19.5500000000001, ymax=12048.55,
+ytick style={color=black}
+]
+\addplot [semithick, color0]
+table {%
+0 970
+1 6990
+2 10018
+3 10336
+4 9961
+5 9915
+6 10103
+7 10019
+8 10246
+9 10531
+10 10055
+11 9785
+12 9888
+13 10473
+14 10326
+15 9799
+16 9756
+17 10068
+18 10022
+19 9874
+20 10454
+21 11447
+22 10988
+23 529
+24 11500
+25 8617
+26 10783
+27 11395
+28 11146
+29 11230
+30 11388
+31 11232
+32 10892
+33 10807
+34 11180
+35 8747
+36 7889
+37 11051
+38 11292
+39 10465
+};
+\end{axis}
+
+\end{tikzpicture}
